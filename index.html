@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student login</title>
+<style>
+  :root {
+    --bg: #e6edf4;
+    --ink: #17304f;
+    --ink-soft: #5b6b80;
+    --rule: #d3deea;
+    --paper: #fffefb;
+    --margin: #e07a6f;
+    --accent: #f2b53d;
+    --focus: #2f6fd1;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  }
+
+  .sheet {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(23, 48, 79, .12), 0 12px 32px rgba(23, 48, 79, .12);
+    padding: 40px 32px 36px 64px;
+    overflow: hidden;
+  }
+
+  .sheet::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 44px;
+    width: 2px;
+    background: var(--margin);
+    opacity: .7;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    background: var(--paper);
+    display: inline-block;
+    padding-right: 12px;
+  }
+
+  .hint {
+    margin: 0 0 28px;
+    font-size: .95rem;
+    color: var(--ink-soft);
+    background: var(--paper);
+    display: inline-block;
+    padding-right: 12px;
+  }
+
+  form { margin: 0; }
+
+  .field { margin-bottom: 20px; }
+
+  label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  input {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    padding: 11px 12px;
+    background: #fff;
+    border: 1.5px solid #b9c7d8;
+    border-radius: 4px;
+  }
+
+  input::placeholder { color: #8c9aac; }
+
+  input:focus-visible,
+  button:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 8px;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--accent);
+    border: 0;
+    border-radius: 4px;
+    padding: 13px 16px;
+    cursor: pointer;
+    transition: background-color .15s ease;
+  }
+
+  button:hover { background: #e8a626; }
+  button:active { background: #d99a1f; }
+
+  @media (max-width: 420px) {
+    .sheet { padding: 32px 20px 28px 52px; }
+    .sheet::before { left: 34px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    button { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="sheet">
+    <h1>Student login</h1>
+    <p class="hint">Enter your login id and password to continue.</p>
+
+    <form action="/app/login.jsp" method="post">
+      <div class="field">
+        <label for="login_id">Login id</label>
+        <input id="login_id" name="login_id" placeholder="Login id" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  </main>
+</body>
+</html>
